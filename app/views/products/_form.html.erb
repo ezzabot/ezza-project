@@ -1,0 +1,17 @@
+<%= simple_form_for(@product) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class='bg-dark p-3 rounded-3 m-auto' style='width:500px;'>
+
+    <div class="form-inputs">
+      <div class="pt-2 pb-3 text-light"><%= f.input :name_product, placeholder: 'Your Product name' %></div>
+      <div class="pt-2 pb-3 text-light"><%= f.input :description, as: :text, placeholder: 'Description' %></div>
+      <div class="pt-2 pb-3 text-light"><%= f.input :price, as: :integer, placeholder: 'Price' %></>
+    </div>
+
+    <div class="form-actions pt-4">
+      <a class="btn btn-danger" style="color:#36393c;" href="<%= products_path %>">Back</a>
+      <button class="btn btn-success" type="submit" name="commit">Create Product</button>
+    </div>
+  </div>
+<% end %>

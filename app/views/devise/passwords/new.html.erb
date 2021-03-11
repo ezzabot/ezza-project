@@ -1,0 +1,22 @@
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= f.error_notification %>
+<div class='bg-dark p-3 rounded-3 m-auto' style='width:500px; margin-top:50px !important;'>
+    <h2 class="text-center text-light">Forgot your password?</h2>
+    <div class="form-inputs">
+      <div class="pb-3 pt-1">
+        <h6 class="text-light">Email</h6>
+        <%= f.input :email,required: true,autofocus: true,input_html: { autocomplete: "email" }, label: false %>
+        <input class='btn btn-sm btn-outline-light mt-3' type="submit" name="commit" value="Send me reset password instructions" class="btn" data-disable-with="Send me reset password instructions">
+      </div>
+    </div>
+
+    <div class="form-actions text-white pb-3">
+      <div>
+         <a class="btn btn-sm mr-2 btn-outline-primary" href="<%= new_session_path(resource_name) %>">Login</a>
+        <a class="btn btn-sm btn-outline-light" href="<%= registration_path %>">Sign up</a>
+      </div>
+    </div>
+</div>
+  
+<% end %>
+

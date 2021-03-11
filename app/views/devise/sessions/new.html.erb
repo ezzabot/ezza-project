@@ -1,0 +1,29 @@
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class='bg-dark p-3 rounded-3 m-auto' style='width:500px; margin-top:50px !important;'>
+  <h2 class="text-center text-light">Log in</h2>
+  <div class="form-inputs">
+  <div class="pb-3 pt-1">
+    <h6 class="text-light">Email</h6>
+    <%= f.input :email,required: false,autofocus: true,input_html: { autocomplete: "email" } ,label: false %>
+  </div>
+  <div class="pb-3 pt-1">
+    <h6 class="text-light">Password</h6>
+    <%= f.input :password,required: false,input_html: { autocomplete: "current-password" } ,label: false %>
+    <a class="pt-2" href="<%= new_password_path(resource_name) %>">Forgot your password?</a>
+  </div>
+    <fieldset class="form-group boolean optional user_remember_me pb-2">
+      <div class="form-check">
+        <input name="user[remember_me]" type="hidden" value="0">
+        <input class="form-check-input boolean optional" type="checkbox" value="1" name="user[remember_me]" id="user_remember_me">
+        <label class="form-check-label boolean optional text-light" for="user_remember_me">Remember me</label>
+      </div>
+    </fieldset>
+  </div>
+  <div class="form-actions">
+    <input class="btn btn-outline-primary" type="submit" name="commit" value="Log in" class="btn" data-disable-with="Log in">
+    <a class="btn btn-outline-light" href="<%= new_registration_path(resource_name) %>">Sign up</a>
+  </div>
+<% end %>
+
+</div>
