@@ -1,4 +1,6 @@
-
+<head>
+  <%= stylesheet_link_tag '' %>
+</head>
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 <div class='bg-dark p-3 rounded-3 m-auto' style='width:500px; margin-top:50px !important;'>
   <h2 class="text-center text-light">Log in</h2>
@@ -10,7 +12,7 @@
   <div class="pb-3 pt-1">
     <h6 class="text-light">Password</h6>
     <%= f.input :password,required: false,input_html: { autocomplete: "current-password" } ,label: false %>
-    <a class="pt-2" href="<%= new_password_path(resource_name) %>">Forgot your password?</a>
+    <a class="pt-2" id="forgot_password_link" href="<%= new_password_path(resource_name) %>">Forgot your password?</a>
   </div>
     <fieldset class="form-group boolean optional user_remember_me pb-2">
       <div class="form-check">
