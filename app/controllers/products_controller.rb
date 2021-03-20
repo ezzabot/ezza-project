@@ -2,6 +2,10 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
 
   # GET /products or /products.json
+  def home
+    @products = Product.all
+  end
+
   def index
     @products = Product.all
   end

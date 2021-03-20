@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <% if current_user %>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -14,13 +14,16 @@
           <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Dropdown
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
@@ -28,37 +31,60 @@
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-      <div class="d-flex">
-        <h5 style="margin:auto 1rem" class="text-white"><%= current_user.username %></h5>
-        <a rel="nofollow" class="btn btn-sm btn-outline-light" data-method="delete" href="<%= destroy_user_session_path %>">Logout</a>
-      </div>
-    <% else %>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
+    
+      <% if current_user %>
+ 
+        
+        <div class="d-flex">
+          <div class="dropdown">
+            <a class="btn btn-outline-dark p-0" href="#" role="button" id="dropdownMenuLink"data-bs-toggle="dropdown" aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"  class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+              </svg>
+            </a>
+
+            <ul class="dropdown-menu  dropdown-menu-dark" style="left: -58px;top: 36px;" aria-labelledby="dropdownMenuLink">
+        
+        <% if current_user.become_to == 'buyer' %>
+          
+              <li class="dropdown-header">
+                <h5 style="font-weight: bolder; font-size:16px; padding:4px 0;" class="text-center text-white mb-0  "><%= current_user.username %></h5>
+                <h6 style="font-size:12px; pb-3" class="text-center text-white"><%= current_user.become_to  %></h6>
+                <hr style='height:3px; color:white;'> 
+              </li>
+              <li><a class="dropdown-item" style="font-size:12px;" href="#">Another action</a></li>
+              <li><a class="dropdown-item" style="font-size:12px;" href="#">Action</a></li>
+              <li><a class="dropdown-item" style="font-size:12px;" href="#">Something else here</a></li>
+              <li><a rel="nofollow" style="font-size:13px; font-weight:bolder;"  class="dropdown-item text-white text-center" data-method="delete"href="<%= destroy_user_session_path %>">Logout</a></li>
+
+        <% end %>
+        <% if current_user.become_to == 'seller' %>
+              <li class="dropdown-header">
+                <h5 style="font-weight: bolder; font-size:16px; padding:4px 0;" class="text-center text-white mb-0  "><%= current_user.username %></h5>
+                <h6 style="font-size:12px; pb-3" class="text-center text-white"><%= current_user.become_to  %></h6>
+                <hr style='height:3px; color:white;'>
+              </li>
+              <li><a class="dropdown-item text-white text-center" style="font-size:13px; font-weight:bolder;" href="<%= products_path %>">Products</a></li>
+              <li><a class="dropdown-item" style="font-size:12px;" href="#">Another action</a></li>
+              <li><a class="dropdown-item" style="font-size:12px;" href="#">Action</a></li>
+              <li><a class="dropdown-item" style="font-size:12px;" href="#">Something else here</a></li>
+              <li><a rel="nofollow" style="font-size:13px; font-weight:bolder;"  class="dropdown-item text-white text-center" data-method="delete"href="<%= destroy_user_session_path %>">Logout</a></li>
+        
+        <% end %>
+            </ul>
+          </div>
+        </div>
+        
+
+      <% else %>
+
       <div class="d-flex">
         <a rel="nofollow" class="btn btn-sm btn-outline-light" href="<%= new_user_session_path %>">Login</a>
       </div>
-    <% end %>
+    
+      <% end %>
+    
     </div>
   </div>
 </nav>

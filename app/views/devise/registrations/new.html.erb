@@ -1,10 +1,9 @@
-
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+<%= f.error_notification %>
 
-  <div class='bg-dark p-3 rounded-3 m-auto' style='width:500px; margin-top:50px !important;'>
-    <h2 class="text-center text-light">Sign up</h2>
-    <div class="form-inputs">
+<div class='bg-dark p-3 rounded-3 m-auto' style='width:500px; margin-top:50px !important; margin-bottom:100px;'>
+  <h2 class="text-center text-light">Sign up</h2>
+  <div class="form-inputs">
     <div class="pb-3 pt-1">
       <h6 class="text-light">Username</h6>
       <%= f.input :username, required: true, autofocus: true, label: false%>
@@ -15,17 +14,27 @@
     </div>
     <div class="pb-3 pt-1 text-white">
       <h6 class="text-light">Password</h6>
-      <div class="text-white"><%= f.input :password,required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), label: false %></div>
+      <div class="text-white">
+        <%= f.input :password,required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), label: false %>
+      </div>
     </div>
     <div class="pb-3 pt-1 text-white">
       <h6 class="text-light">Password Confirmation</h6>
       <%= f.input :password_confirmation,required: true, label: false%>
-    </div>  <br>
+    </div>
+    
+    <div class="pb-3 pt-1 text-white form-check-inline">
+      <h6 class="text-light">Become To</h6>
+      <%# <%= f.input :become_to, as: :select, collection: [['buyer', 'Buyer'], ['seller', 'Seller']], label: false,%> 
+       <%= f.select :become_to, [['Buyer',"buyer"],['Seller','seller']] %>
+    </div>
+    
+     <br>
   </div>
   <div class="form-actions">
     <input class="btn btn-outline-primary" type="submit" value="Submit">
-    <%= render "devise/shared/links" %>
   </div>
-<% end %>
+  <p class="text-white mt-2 text-center">If you have an account? <a class="link-primary" href="<%= new_session_path(resource_name)%>" role="button">Click Here!</a></p>
+  <% end %>
 
-<%#<a class="btn btn-primary" href="#" role="button"></a>%>
+  <%#<a class="btn btn-primary" href="#" role="button"></a>%>

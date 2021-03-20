@@ -12,7 +12,7 @@
   <div class="pb-3 pt-1">
     <h6 class="text-light">Password</h6>
     <%= f.input :password,required: false,input_html: { autocomplete: "current-password" } ,label: false %>
-    <a class="pt-2" id="forgot_password_link" href="<%= new_password_path(resource_name) %>">Forgot your password?</a>
+    <a class="pt-2 text-white"  id="forgot_password_link" href="<%= new_password_path(resource_name) %>">Forgot your password?</a>
   </div>
     <fieldset class="form-group boolean optional user_remember_me pb-2">
       <div class="form-check">
@@ -23,9 +23,9 @@
     </fieldset>
   </div>
   <div class="form-actions">
-    <input class="btn btn-outline-primary" type="submit" name="commit" value="Log in" class="btn" data-disable-with="Log in">
-    <a class="btn btn-outline-light" href="<%= new_registration_path(resource_name) %>">Sign up</a>
+    <input class="btn btn-outline-primary " style='margin-right:15px;' type="submit" name="commit" value="Log in" class="btn" data-disable-with="Log in">
   </div>
+  <p class="text-white mt-2 text-center">If you not have an account? <a class="link-primary" href="<%= new_registration_path(resource_name) %>" >Click Here!</a></p>
 <% end %>
 
 </div>
