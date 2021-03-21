@@ -1,19 +1,26 @@
 <!--  id="notice"><%= notice %></!--> 
 
-<p>
-  <strong>Name product:</strong>
-  <%= @product.name_product %>
-</p>
+<section class="container">
+  <div class="mt-5 p-4 w-25 m-auto" style='background-color:#a2d9ff;border-radius:60px 0px 60px 0px;'>
+    <p>
+      <strong>Name product:</strong>
+      <%= @product.name_product %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @product.description %>
+    </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
+    <p>
+      <strong>Price:</strong>
+      <%= @product.price %>
+    </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+    <div class="form-action">
+    
+      <a href="<%= edit_product_path(@product) %>" class="btn btn-sm btn-outline-dark" style="margin-left:110px;">Edit</a>
+      <a href="<%= products_path %>" class="btn btn-sm btn-outline-dark">Back</a>
+    </div>
+  </div>
+</section>

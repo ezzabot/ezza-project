@@ -1,19 +1,23 @@
 <h1 class="mt-3 mb-3">Products</h1>
 
-<div id="product" class="">
-<% @products.each do |p| %>
-    <div class="card" style="width: 18rem;">
-        <%= image_tag 'cap.png', :class => 'card-img-top' %>
-        <div class="card-body">
-            <h5 class="card-title"><%= p.name_product %></h5>
-            <p class="card-text"><%= p.description %></p>
-            <div class="d-flex">
-                <h7 class="card-text nav-link " style="padding:9px"><span style="font-size:11px;">Rp:</span><%= p.price%></h7>
-                <a href="#" class="btn btn-outline-success">Buy</a>
+<div id="product">
+    <div class="row">
+        <% @products.each do |p| %>
+        <div class="col">
+            <div class="card mb-3 mt-3" style="width: 18rem;">
+                <%= image_tag 'cap.png', :class => 'card-img-top' %>
+                <div class="card-body">
+                    <h5 class="card-title"style="font-size:18px;"><%= p.name_product %></h5>
+                    <p class="card-text mt-4 mb-2" style="font-size:12px;"><%= p.description %></p>
+                    <div class="d-flex">
+                        <h7 class="card-text nav-link " style="padding:9px"><span style="font-size:11px;">Rp:</span><%= p.price%></h7>
+                        <a href="#" class="btn btn-sm btn-outline-success" style="height:30px;"> Buy</a>
+                    </div>
+                </div>
             </div>
         </div>
+        <% end %>
     </div>
-<% end %>
 
 
 
